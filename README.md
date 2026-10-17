@@ -1,190 +1,261 @@
-# Customer Shopping Behavior Analysis
+<div align="center">
 
-An end-to-end retail analytics project exploring customer purchase patterns, product preferences, discount usage, shipping choices, and subscription behavior. The project workflow combines Python for data preparation and exploratory data analysis (EDA), PostgreSQL for business-focused SQL analysis, and Power BI for dashboard-based communication.
+# 🛍️ Customer Shopping Behavior Analysis
+### From 3,900 shopping records to actionable retail insights
 
-> **Dataset:** 3,900 purchase records and 18 original columns  
-> **Primary tools:** Python, pandas, PostgreSQL, SQL, Power BI  
-> **Business focus:** Customer segmentation, revenue analysis, product performance, customer retention, and marketing opportunities
+**An end-to-end Data Analytics portfolio project using Python, PostgreSQL & Power BI**
 
-## Table of Contents
+![Python](https://img.shields.io/badge/Python-Data%20Cleaning-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-SQL%20Analysis-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
+![Power BI](https://img.shields.io/badge/Power%20BI-Interactive%20Dashboard-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
+![Status](https://img.shields.io/badge/Project-Portfolio-2E8B57?style=for-the-badge)
 
-- [Business Objective](#business-objective)
-- [Project Workflow](#project-workflow)
-- [Dataset](#dataset)
-- [Analysis Questions](#analysis-questions)
-- [Key Findings](#key-findings)
-- [Business Recommendations](#business-recommendations)
-- [Tools and Skills](#tools-and-skills)
-- [Repository Structure](#repository-structure)
-- [Reproducing the Analysis](#reproducing-the-analysis)
-- [Limitations and Validation Notes](#limitations-and-validation-notes)
-- [Author](#author)
+**[Explore the Dataset](#-dataset-at-a-glance) · [Discover Insights](#-key-findings) · [View Dashboard](#-power-bi-dashboard) · [Read Report](reports/Customer_Shopping_Behavior_Analysis.pdf)**
 
-## Business Objective
+</div>
 
-Retail teams need to understand what influences purchase value, which products attract customers, how discount and shipping choices relate to spending, and how to encourage repeat purchases. This project analyzes customer transaction and behavior data to turn descriptive data into actionable questions for marketing, merchandising, and customer-retention teams.
+---
 
-## Project Workflow
+## ✨ The Story Behind the Data
 
-1. **Load and inspect data:** Read the CSV with pandas and review schema, data types, descriptive statistics, and missing values.
-2. **Clean and prepare:** Handle missing review ratings, standardize column names, and check for overlapping discount/promo-code fields.
-3. **Engineer features:** Create age groups and a purchase-frequency feature for further analysis.
-4. **Load into PostgreSQL:** Transfer the prepared data to a relational database for SQL analysis.
-5. **Analyze business questions:** Use aggregations, filtering, ranking, and customer grouping to examine revenue, products, shipping, discounts, and subscriptions.
-6. **Visualize in Power BI:** Present high-level KPIs and breakdowns by customer and purchase attributes.
-7. **Communicate recommendations:** Translate the analysis into ideas for retention, subscription engagement, marketing, and product positioning.
+**What makes customers spend more? Which products drive revenue? Do subscriptions and discounts actually influence purchasing behavior?**
 
-## Dataset
+This project investigates retail shopping patterns across **3,900 purchase records** to answer practical questions that a marketing, merchandising, or business intelligence team might ask. The workflow follows the analytics lifecycle: **raw data → cleaning & EDA → PostgreSQL analysis → Power BI dashboard → business recommendations**.
 
-The source CSV contains 3,900 rows and 18 columns. The `Review Rating` field contains 37 missing values; the other columns have no missing values in the supplied file.
+> 🎯 **Goal:** Turn transaction-level data into clear insights about revenue, customer behavior, product performance, and retention opportunities.
 
-| Column | Description |
+## 📌 Project at a Glance
+
+| 🧾 Purchase Records | 🧩 Original Features | 🧹 Missing Ratings | 💵 Average Purchase |
+|:---:|:---:|:---:|:---:|
+| **3,900** | **18** | **37** | **$59.76** |
+
+**Domain:** Retail / E-commerce Analytics  
+**Core skills:** Data Cleaning · Exploratory Data Analysis · SQL Aggregation · Customer Segmentation · KPI Reporting · Data Visualization · Business Storytelling
+
+## 🗺️ End-to-End Workflow
+
+![Project workflow](assets/project_workflow.png)
+
+| Stage | What happens | Tool |
+|---|---|---|
+| **01 · Define** | Frame business questions around customers, products, and revenue | Business analysis |
+| **02 · Prepare** | Inspect records, address missing ratings, standardize fields, engineer features | Python / pandas |
+| **03 · Investigate** | Answer ten business questions using structured queries | PostgreSQL / SQL |
+| **04 · Visualize** | Build an interactive overview of key retail metrics | Power BI |
+| **05 · Recommend** | Translate findings into marketing and retention opportunities | Reporting |
+| **06 · Present** | Share findings in a report and presentation | PDF / PowerPoint |
+
+## 🧩 Business Questions
+
+The analysis is organized around four decisions:
+
+| Business area | Questions explored |
 |---|---|
-| `Customer ID` | Customer/record identifier in the supplied dataset |
-| `Age` | Customer age |
-| `Gender` | Customer gender |
-| `Item Purchased` | Purchased product |
-| `Category` | Product category |
-| `Purchase Amount (USD)` | Purchase amount in USD |
-| `Location` | Customer location/state |
-| `Size` | Product size |
-| `Color` | Product color |
-| `Season` | Season associated with the purchase |
-| `Review Rating` | Customer review rating |
-| `Subscription Status` | Whether the customer is subscribed |
-| `Shipping Type` | Shipping option selected |
-| `Discount Applied` | Whether a discount was applied |
-| `Promo Code Used` | Whether a promo code was used |
-| `Previous Purchases` | Number of previous purchases |
-| `Payment Method` | Payment method |
-| `Frequency of Purchases` | Reported purchase-frequency category |
+| 💰 **Revenue** | Which gender and age groups contribute most to total purchase amount? |
+| 🛒 **Products** | Which products sell most, rate highest, or depend most on discounts? |
+| 🚚 **Purchase behavior** | How do shipping preferences and discount usage relate to purchase value? |
+| 💜 **Retention** | How do subscription status, previous purchases, and customer segments relate? |
 
-### Data preparation documented in the project
+The accompanying [project report](reports/Customer_Shopping_Behavior_Analysis.pdf) documents **10 SQL business analyses**, including revenue by gender, high-value discount users, top-rated products, shipping comparisons, subscription comparisons, discount-dependent products, customer segmentation, top products per category, repeat buyers, and revenue by age group.
 
-- Inspected data structure with `DataFrame.info()` and summary statistics with `DataFrame.describe()`.
-- Imputed missing review ratings using the median rating within each product category.
-- Standardized column names to snake case.
-- Created age-group and purchase-frequency features.
-- Checked whether `Discount Applied` and `Promo Code Used` were redundant; the report states that `Promo Code Used` was dropped.
-- Loaded the prepared data into PostgreSQL for SQL analysis.
+## 📂 Dataset at a Glance
 
-## Analysis Questions
+The source file is [`data/customer_shopping_behavior.csv`](data/customer_shopping_behavior.csv).
 
-The accompanying project report documents these business questions:
+| Feature group | Included fields |
+|---|---|
+| Customer profile | Customer ID, Age, Gender, Location |
+| Shopping details | Item Purchased, Category, Purchase Amount (USD), Size, Color, Season |
+| Engagement | Review Rating, Subscription Status, Previous Purchases, Frequency of Purchases |
+| Transaction preferences | Shipping Type, Discount Applied, Promo Code Used, Payment Method |
 
-1. How does total revenue compare across gender groups?
-2. Which customers used discounts but still spent above the average purchase amount?
-3. Which products have the highest average review ratings?
-4. How do average purchase amounts compare across shipping types?
-5. How do subscriber and non-subscriber groups compare on customer count, average spend, and revenue?
-6. Which products have the highest share of discounted purchases?
-7. How are customers classified as New, Returning, or Loyal based on purchase history?
-8. Which products are most frequently purchased within each category?
-9. How many repeat buyers are subscribers versus non-subscribers?
-10. Which age groups contribute the most revenue?
+### 🧼 Cleaning and Feature Engineering
 
-## Key Findings
+The project report documents the following steps:
 
-The following values are calculated directly from the supplied CSV, rather than copied from potentially inconsistent presentation graphics.
+- Loaded the CSV using **pandas** and inspected the structure using `.info()` and `.describe()`.
+- Addressed **37 missing values in `Review Rating`** using the **median rating by product category**.
+- Standardized column names into **snake_case**.
+- Created `age_group` and `purchase_frequency_days` features.
+- Checked redundancy between `discount_applied` and `promo_code_used`, and removed the latter in the documented cleaned dataset.
+- Loaded prepared data into **PostgreSQL** for business analysis.
 
-- **Overall purchase value:** Total purchase amount is **$233,081**, with an average of **$59.76** per record.
-- **Revenue by gender:** Records labeled Male contribute **$157,890** in purchase amount, while records labeled Female contribute **$75,191**. These totals should be interpreted in the context of the dataset's group sizes (2,652 Male records and 1,248 Female records).
-- **Category contribution:** Clothing contributes **$104,264**, Accessories **$74,200**, Footwear **$36,093**, and Outerwear **$18,524** in purchase amount.
-- **Shipping comparison:** Average purchase amount is approximately **$60.48 for Express** and **$58.46 for Standard** shipping, a difference of about **3.4%**.
-- **Subscription comparison:** The dataset has **1,053 subscription records** and **2,847 non-subscription records**. Total purchase amount is **$62,645** for subscribers and **$170,436** for non-subscribers. Average purchase amounts are approximately **$59.49** and **$59.87**, respectively.
+## 🔎 Key Findings
 
-These are descriptive comparisons, not evidence that gender, shipping, or subscription status causes higher or lower spending.
+The figures below are computed from the supplied raw CSV. They are descriptive results, not causal claims.
 
-## Business Recommendations
+### 💵 1. Purchase value
 
-Based on the project questions and descriptive results, potential actions include:
+- **Total purchase amount:** **$233,081**
+- **Average purchase amount:** **$59.76**
 
-- **Customer retention:** Design lifecycle messaging and loyalty benefits to encourage first-time customers to return and repeat customers to remain active.
-- **Subscription engagement:** Test subscriber benefits and measure conversion, repeat purchase rate, and revenue per customer before drawing conclusions about subscription impact.
-- **Discount effectiveness:** Compare discounted and non-discounted orders while tracking margin, not only purchase amount.
-- **Merchandising:** Promote well-rated and frequently purchased products, while validating ratings against sample sizes.
-- **Targeted marketing:** Compare age groups and customer segments using both revenue and customer counts to avoid confusing group size with customer value.
-- **Shipping strategy:** Evaluate shipping preferences alongside basket size, fulfillment costs, and customer satisfaction before changing shipping offers.
+### 🧥 2. Revenue by product category
 
-## Tools and Skills
+| Category | Purchase amount |
+|---|---:|
+| 🥇 Clothing | **$104,264** |
+| 🥈 Accessories | **$74,200** |
+| 🥉 Footwear | **$36,093** |
+| Outerwear | **$18,524** |
 
-- **Python:** pandas, data inspection, missing-value treatment, feature engineering, exploratory data analysis
-- **SQL / PostgreSQL:** filtering, grouping, aggregations, ranking, customer segmentation, business-question analysis
-- **Power BI:** KPI cards, slicers/filters, category and age-group comparisons, dashboard storytelling
-- **Analytics:** data quality checks, descriptive statistics, customer behavior analysis, insight communication, business recommendations
-- **Git/GitHub:** project documentation and version-controlled portfolio presentation
+**Takeaway:** Clothing is the largest revenue-contributing category in this dataset, making it an important area for merchandising analysis.
 
-## Repository Structure
+### 🚚 3. Shipping preference vs. basket value
+
+| Shipping type | Average purchase amount |
+|---|---:|
+| Express | **$60.48** |
+| Standard | **$58.46** |
+
+**Takeaway:** Express-shipping records have approximately **3.4% higher average purchase amounts** than Standard-shipping records. This association does not establish that Express shipping causes larger purchases.
+
+### 💜 4. Subscription comparison
+
+| Metric | Subscribed | Not subscribed |
+|---|---:|---:|
+| Records | **1,053** | **2,847** |
+| Total purchase amount | **$62,645** | **$170,436** |
+| Average purchase amount | **$59.49** | **$59.87** |
+
+**Takeaway:** Non-subscribers account for more total purchase amount primarily because there are more non-subscriber records. Average purchase amounts are very similar across the two groups.
+
+### 👥 5. Revenue by gender
+
+| Gender | Records | Total purchase amount |
+|---|---:|---:|
+| Male | **2,652** | **$157,890** |
+| Female | **1,248** | **$75,191** |
+
+**Takeaway:** Compare both totals and group sizes when interpreting revenue differences; a larger group can contribute more total revenue without spending more per transaction.
+
+## 📊 Power BI Dashboard
+
+The project report includes a Power BI dashboard designed to bring the analysis together in one view.
+
+**Featured KPI cards**
+- Customer/record count
+- Average purchase amount
+- Average review rating
+
+**Interactive breakdowns**
+- Subscription-status distribution
+- Revenue and sales by category
+- Revenue and sales by age group
+- Filters for gender, category, subscription status, and shipping type
+
+📄 **[View dashboard in the project report (page 7)](reports/Customer_Shopping_Behavior_Analysis.pdf)**
+
+> 📸 **Portfolio enhancement:** Add an exported dashboard screenshot to `assets/dashboard.png` and the editable `.pbix` file to a `powerbi/` folder when available. These assets were not included in the uploaded materials.
+
+## 💡 Business Recommendations
+
+| Opportunity | Recommended next step | KPI to monitor |
+|---|---|---|
+| 🎁 **Customer loyalty** | Test repeat-purchase rewards and lifecycle messaging | Repeat purchase rate |
+| 💌 **Subscription engagement** | Experiment with member-exclusive benefits | Subscription conversion |
+| 🏷️ **Discount optimization** | Assess discount effectiveness alongside margins | Contribution margin |
+| ⭐ **Product positioning** | Feature well-rated and frequently purchased items | Product conversion |
+| 🎯 **Targeted marketing** | Compare age and behavioral segments before tailoring campaigns | Revenue per customer |
+
+These are **proposed actions**, not measured outcomes from implemented campaigns.
+
+## 🧰 Tech Stack
+
+| Technology | Role |
+|---|---|
+| **Python / pandas** | Loading, data quality checks, cleaning, feature engineering, EDA |
+| **PostgreSQL / SQL** | Business queries, aggregation, filtering, ranking, segmentation |
+| **Power BI** | KPI visualization, interactive filtering, dashboard reporting |
+| **PowerPoint / PDF** | Stakeholder-facing presentation and project documentation |
+
+## 📁 Repository Structure
 
 ```text
 customer-shopping-behavior-analysis/
+├── README.md
 ├── data/
 │   └── customer_shopping_behavior.csv
 ├── reports/
 │   ├── Customer_Shopping_Behavior_Analysis.pdf
 │   └── Customer_Shopping_Behavior_Analysis.pptx
-├── assets/
-│   └── project_workflow.png
-└── README.md
+└── assets/
+    └── project_workflow.png
 ```
 
-The supplied files include the dataset, report, presentation, and workflow diagram. The original Python notebook/script, PostgreSQL SQL script, and editable Power BI `.pbix` file were not included in the uploaded materials. Add those files to the repository if available so that others can reproduce the full workflow.
+**Recommended additions** (not part of the currently supplied files):
 
-## Reproducing the Analysis
+```text
+├── notebooks/
+│   └── customer_shopping_eda.ipynb
+├── sql/
+│   └── business_analysis.sql
+└── powerbi/
+    └── customer_behavior_dashboard.pbix
+```
 
-### 1. Clone the repository
+## 🚀 Explore the Project Locally
+
+**1. Clone your repository** (replace the placeholder with your GitHub username):
 
 ```bash
-git clone https://github.com/<your-username>/customer-shopping-behavior-analysis.git
+git clone https://github.com/YOUR_USERNAME/customer-shopping-behavior-analysis.git
 cd customer-shopping-behavior-analysis
 ```
 
-### 2. Set up Python
+**2. Install pandas:**
 
 ```bash
-python -m venv .venv
+pip install pandas
 ```
 
-Activate the environment:
-
-- Windows: `.venv\Scripts\activate`
-- macOS/Linux: `source .venv/bin/activate`
-
-Install the analysis dependencies:
-
-```bash
-pip install pandas numpy matplotlib seaborn jupyter sqlalchemy psycopg2-binary
-```
-
-### 3. Load the CSV
+**3. Inspect the source data:**
 
 ```python
 import pandas as pd
 
 df = pd.read_csv("data/customer_shopping_behavior.csv")
 
-print(df.shape)
-print(df.info())
-print(df.isna().sum())
-print(df.describe(include="all"))
+print("Shape:", df.shape)
+print("\nMissing values:\n", df.isna().sum())
+print("\nSummary:\n", df.describe(include="all"))
 ```
 
-### 4. Continue with the documented workflow
+**4. Explore the supporting deliverables:**
 
-Use the project report as the guide for cleaning and feature engineering, load the cleaned dataset into PostgreSQL, execute SQL queries for the business questions above, and open the Power BI report if the `.pbix` file is available.
+- [Project report (PDF)](reports/Customer_Shopping_Behavior_Analysis.pdf)
+- [Presentation (PowerPoint)](reports/Customer_Shopping_Behavior_Analysis.pptx)
+- [Workflow diagram](assets/project_workflow.png)
 
-> **Reproducibility note:** The uploaded materials do not include the original Python code, SQL queries, or editable Power BI file. The command above loads and inspects the dataset; it does not by itself reproduce every reported analysis.
+> **Reproducibility:** The original Python notebook/script, SQL queries, and Power BI `.pbix` were not provided. The steps above reproduce initial data inspection, not the complete documented pipeline.
 
-## Limitations and Validation Notes
+## ⚠️ Interpretation & Quality Notes
 
-- This is observational transaction data; results show associations and group differences, not causal effects.
-- The dataset includes 3,900 records, but the available documentation does not establish whether each record represents a unique person or a unique order in every analysis. Interpret customer-level claims carefully.
-- The accompanying presentation contains some figures that do not agree with calculations from the supplied CSV. For example, the CSV's average purchase amount is about **$60.48 for Express** and **$58.46 for Standard** shipping, not $65 and $58. Recalculate charts and narrative claims from the cleaned data before using the presentation as a source of quantitative truth.
-- Customer segment percentages in the presentation should be validated against the SQL segmentation logic and underlying counts before publication.
-- No profitability or margin fields are provided, so revenue/purchase amount should not be treated as profit.
+- The presentation and report include **some inconsistent figures**. This README prioritizes values calculated from the provided raw CSV; verify the cleaned dataset and refresh any visuals before publication.
+- In particular, presentation claims about **shipping uplift, gender revenue, subscription impact, and customer-segment percentages** should not be reused without checking the underlying calculations.
+- The dataset does not establish a complete time-series of repeat orders per identified customer, so avoid interpreting segmentation labels as verified retention outcomes without reviewing the SQL logic.
+- Revenue/purchase amount is **not profit**; margins and fulfillment costs are not available.
+- Differences across customer groups are descriptive and should not be interpreted as proof of causation.
 
-## Author
+## 📚 Project Deliverables
+
+| Resource | Link |
+|---|---|
+| 🗃️ Raw dataset | [CSV](data/customer_shopping_behavior.csv) |
+| 📑 Detailed analysis | [PDF report](reports/Customer_Shopping_Behavior_Analysis.pdf) |
+| 🎤 Stakeholder presentation | [PowerPoint](reports/Customer_Shopping_Behavior_Analysis.pptx) |
+| 🧭 Process overview | [Workflow image](assets/project_workflow.png) |
+
+---
+
+<div align="center">
+
+### 👨‍💻 About the Author
 
 **Ruchit Sonawane**
 
-Add your GitHub profile and LinkedIn URL here before publishing.
+*Data Analytics · SQL · Python · Power BI · Business Insights*
+
+**If this project helped you, consider giving the repository a ⭐!**
+
+</div>
